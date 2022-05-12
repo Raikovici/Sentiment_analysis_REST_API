@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Tema 3 Raicu</title>
+</head>
+
+<body>
+  <h1>Sentiment Analysis</h1>
+    Select text file to upload:
+  
+  <form action="tema.php" method="post" enctype="multipart/form-data" id="formm">
+    <input type="file" name="fileToUpload" id="fileToUpload">
+    <br><br>
+    <div>
+      <label for='textAnalysis'>
+        <textarea name="textAnalysis" cols="40" rows="8" id="textAnalysis" placeholder="Please insert your text for sentiment analysis" required></textarea>
+      </label>
+    </div>
+    <input type="submit" value="Analyse" name="submit" id="submit">    
+  </form>
+
+  <script>
+	var input = document.getElementById("fileToUpload");
+	var output = document.getElementById("textAnalysis");
+	input.addEventListener("change", function () {
+  		if (this.files && this.files[0]) {
+    			var myFile = this.files[0];
+    			var reader = new FileReader();
+    			reader.addEventListener('load', function (e) {
+      				output.textContent = e.target.result;
+				console.log(output.textContent);
+    			});
+    			reader.readAsBinaryString(myFile);
+  		}   
+	});
+	
+  </script>
+</body>
+
+</html>
